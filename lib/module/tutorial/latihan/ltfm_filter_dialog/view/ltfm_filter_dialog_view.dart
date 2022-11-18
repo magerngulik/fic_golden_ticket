@@ -103,6 +103,42 @@ class LtfmFilterDialogView extends StatefulWidget {
                         //! Tambahkan field2 ini:
                         //? datepicker dengan label "from"
                         //? datepicker dengan label "to"
+                        await showDialog<void>(
+                          context: context,
+                          barrierDismissible: true,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Filter'),
+                              content: SingleChildScrollView(
+                                child: ListBody(
+                                  children: <Widget>[
+                                    QDatePicker(
+                                      label: "from",
+                                      onChanged: (p0) {},
+                                      hint: "from",
+                                    ),
+                                    QDatePicker(
+                                      label: "to",
+                                      onChanged: (p0) {},
+                                      hint: "to",
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blueGrey,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text("Filter"),
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       },
                     ),
                   ),

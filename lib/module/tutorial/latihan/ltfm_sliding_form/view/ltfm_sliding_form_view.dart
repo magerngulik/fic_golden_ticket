@@ -28,25 +28,49 @@ class LtfmSlidingFormView extends StatefulWidget {
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         "Apply Leave",
                         style: TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+
                       //! 1. buat datepicker, atur label-nya menjadi
                       //? "Leave Date"
+                      QDatePicker(label: "Leave Data", onChanged: (data) {})
 
                       //! 2. Buat textarea, atur label-nya menjadi
                       //? "Reason"
 
-                      //! 3. Tambahkan Divider
+                      ,
+                      QMemoField(
+                        label: "Reason",
+                        onChanged: (p0) {},
+                      )
 
+                      //! 3. Tambahkan Divider
+                      ,
+                      const Divider(),
                       //! 4. Buat sebuah tombol:
                       //? width: MediaQuery.of(context).size.width,
                       //? height: 40
+
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 40,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blueGrey,
+                          ),
+                          onPressed: () {
+                            controller.submitted = !controller.submitted;
+                            controller.update();
+                          },
+                          child: const Text("Save"),
+                        ),
+                      ),
 
                       //! 5. Ketika di klik, tambahkan kode ini:
                       /*
